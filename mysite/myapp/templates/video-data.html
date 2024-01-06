@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+{% block title %}
+<h4 class="header-title">Video Data</h4>
+{% endblock %}
+{% block body %}
+    <div class="video-data">
+        <h3>{{title}}</h3>
+        <h3>Channel Name: {{channel}} || Published: {{publishDate}}</h3>
+        <img src={{thumbnail}} alt="">
+    </div>
+    <h4 class="comment">Video Description: {{description}}</h4>
+    <h4 class="comment">Average Comment Sentiment Score: {{averageSentiment}}</h4>
+    <h4 class="comment">Like Count: {{likeCount}} || View Count: {{viewCount}}</h4>
+    <h4 class="comment">Most Positive Comment: {{highestComment.0}}</h4>
+    <h4 class="comment">Sentiment Score: {{ highestComment.1 }} || Positive: {{highestComment.2}}% || Negative: {{highestComment.3}}% || Neutral: {{highestComment.4}}%</h4>
+    <h4 class="comment">Most Negative Comment: {{lowestComment.0}}</h4>
+    <h4 class="comment">Sentiment Score: {{lowestComment.1 }} || Positive: {{lowestComment.2}}% || Negative: {{lowestComment.3}}% || Neutral: {{lowestComment.4}}%</h4>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+
+{% block body %}
+<div class="placeholder">
+    <h4 class="instructions">Enter Youtube url to pull comment data</h4>
+</div>
+<div class="placeholder">
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" class="url" id="url" name="url-input" placeholder="Enter Youtube URL">
+        <button class="submit-btn"type="submit">Submit</button>
+    </form>
+</div>
+{%endblock%}

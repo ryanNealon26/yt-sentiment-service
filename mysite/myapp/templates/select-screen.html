@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block title %}
+<h4 class="header-title">Select Page</h4>
+{% endblock %}
+{% block body %}
+<h3>
+    Successfully pulled Youtube comments, please select a new page to view comment data.
+</h3>
+<div class="button-holder">
+    <a href="\video-data" class="button-link">
+        <button class="href-button">
+            View Video Data
+        </button>
+    </a>
+    <a href="\read" class="button-link">
+        <button class="href-button">
+            Read All Comments
+        </button>
+    </a>
+    <a href="\positive-comments" class="button-link">
+        <button class="href-button">View Positive Comments</button>
+    </a>
+    <a href="\negative-comments" class="button-link">
+        <button class="href-button">View Negative Comments</button>
+    </a>
+    <a href="\" class="button-link">
+        <button class="href-button">Search Another Video</button>
+    </a>
+</div>
+{% endblock %}

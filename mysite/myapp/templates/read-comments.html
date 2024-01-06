@@ -1,0 +1,10 @@
+{% extends "index.html" %}
+{% block title %}
+<h4 class="header-title">Returned Comments - No Sentiment Score</h4>
+{% endblock %}
+
+{% block body %}
+{% for comment in data %} 
+    <h4 class="comment">{{ comment }}</h4>
+{% endfor %} 
+{% endblock %}
