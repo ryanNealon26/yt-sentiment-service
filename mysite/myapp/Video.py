@@ -16,7 +16,7 @@ class Video:
             part='snippet',
             videoId= video_id[-1],
             textFormat = 'plainText',
-            maxResults=50
+            maxResults=150
         ).execute()
         return request
     def video_data(self):

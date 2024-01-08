@@ -23,3 +23,5 @@ def negativeComments(request):
 def videoData(request):
     videoData = user.video_statistics()
     return render(request, 'video-data.html', videoData)
+def googleCharts(request):
+    return render(request, 'google-charts.html')

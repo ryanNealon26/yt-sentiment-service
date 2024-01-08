@@ -8,4 +8,7 @@ urlpatterns = [
     path("positive-comments/", views.positiveComments, name ='positiveComments'), 
     path("negative-comments/", views.negativeComments, name ='negativeComments'), 
     path("video-data/", views.videoData, name ='videoData'), 
+    path("google-charts/", views.googleCharts, name ='googleCharts'), 
+
+
 ]

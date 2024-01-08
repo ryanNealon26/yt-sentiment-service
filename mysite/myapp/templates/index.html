@@ -4,7 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="{% static 'index.css' %}">
+    <script>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Comment', 'sentiment'],
+          ['Positive',     50],
+          ['Negative',      50],
+        ]);
+        var options = {
+          title: 'Comment Sentiment Threshold'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
   <header className="App-header">
     {% block title %}
