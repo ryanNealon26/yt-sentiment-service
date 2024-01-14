@@ -3,9 +3,9 @@
 <h4 class="header-title">Video Data</h4>
 {% endblock %}
 {% block body %}
+    <h4 class="comment">{{title}}</h4>
+    <h4 class="comment">Channel Name: {{channel}} || Published: {{publishDate}}</h4>
     <div class="video-data">
-        <h3>{{title}}</h3>
-        <h3>Channel Name: {{channel}} || Published: {{publishDate}}</h3>
         <img src={{thumbnail}} alt="">
     </div>
     <h4 class="comment">Video Description: {{description}}</h4>

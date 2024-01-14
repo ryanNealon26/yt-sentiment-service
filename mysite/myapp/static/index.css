@@ -41,10 +41,12 @@ button.submit-btn{
 }
 h4.comment {
   background-color: #F3F3F3;
+  word-break: break-all;
   border-style: groove;
 }
 h4.comment:nth-child(2n) {
   background-color: #FFF;
+  word-break: break-all;
   border-style: groove;
 }
 div.button-holder{
@@ -78,4 +80,14 @@ div.chartHolder{
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+@media screen and (max-width: 480px) {
+  img {
+    border-radius: 10px;
+    border: 1px solid #000;
+    padding: 5px;
+    width: 100%;
+  }
+}  
+  
 }

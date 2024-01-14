@@ -3,7 +3,40 @@
 <h4 class="header-title">Google Charts</h4>
 {% endblock %}
 {% block body %}
+<script>
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawPieChart);
+    google.charts.setOnLoadCallback(drawScatterChart);
+    var json_data = {{chart_data|safe}}
+    function drawPieChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Comment', 'sentiment'],
+        ['Positive',   json_data.percentPos ],
+        ['Negative',     json_data.percentNeg],
+        ['Neutral',     json_data.percentNeu],
+      ]);
+      var options = {
+        title: 'Comment Sentiment Threshold'
+      };
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    };
+    function drawScatterChart(){
+        var data = google.visualization.arrayToDataTable(json_data.scatterChart, true);
+        var options = {
+          title: 'Indivdual Comment Sentiment Score',
+          hAxis: {title: 'Comment Number', minValue: 0, maxValue: 100},
+          vAxis: {title: 'Sentiment Score', minValue: -100, maxValue: 100},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('scatterchart'));
+
+        chart.draw(data, options);
+      }
+</script>
 <div class="chartHolder">
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  <div id="scatterchart" style="width: 900px; height: 500px;"></div>
+  <div id="piechart" style="width: 900px; height: 500px;"></div>
 </div>
 {% endblock %}

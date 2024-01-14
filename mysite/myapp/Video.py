@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import json
 api_key="AIzaSyBUFNjfHbxq-N4jdgCAGIE0aIb1RV6iTrI"
 
 class Video:
@@ -16,7 +17,7 @@ class Video:
             part='snippet',
             videoId= video_id[-1],
             textFormat = 'plainText',
-            maxResults=150
+            maxResults=100
         ).execute()
         return request
     def video_data(self):
@@ -83,22 +84,41 @@ class Video:
         return average_sentiment
     def view_positive_comments(self):
         video_comments = self.comment_sentiment_list()
+        positive_counter = 0
         pos_com_list = []
         for comment in video_comments:
             if comment[1]>0.05:
                 pos_com_list.append(comment)
+                positive_counter += 1
         pos_comments = {
             'positiveComments': pos_com_list,
+            'positiveCounter': positive_counter
         }
         return pos_comments
+    def view_neutral_comments(self):
+        video_comments = self.comment_sentiment_list()
+        neu_counter = 0
+        neu_com_list = []
+        for comment in video_comments:
+            if comment[1]>-0.05 and comment[1]<.05:
+                neu_com_list.append(comment)
+                neu_counter += 1
+        neu_comments = {
+            'neutralComments': neu_com_list,
+            'neutralCounter': neu_counter
+        }
+        return neu_comments
     def view_negative_comments(self):
         video_comments = self.comment_sentiment_list()
+        negative_counter = 0
         neg_com_list = []
         for comment in video_comments:
             if comment[1]<-0.05:
                 neg_com_list.append(comment)
+                negative_counter+=1
         neg_comments = {
             'negativeComments': neg_com_list,
+            'negativeCounter': negative_counter
         }
         return neg_comments
     def highest_positive_comment(self):
@@ -131,3 +151,26 @@ class Video:
             'highestComment': self.highest_positive_comment()
         }
         return statistics
+    def googlecharts_json(self):
+        video_comments = self.comment_sentiment_list()
+        pos_num = self.view_positive_comments()['positiveCounter']
+        neg_num = self.view_negative_comments()['negativeCounter']
+        neu_num = self.view_neutral_comments()['neutralCounter']
+        comment_num = pos_num + neg_num + neu_num
+        scatter_array = []
+        scatter_counter = 1
+        for comment in video_comments:
+            scatter_array.append([scatter_counter, comment[1]])
+            scatter_counter += 1
+        percentage_dict = {
+            "percentPos": round(pos_num / comment_num, 2),
+            "percentNeg": round(neg_num / comment_num, 2),
+            "percentNeu": round(neu_num / comment_num, 2),
+            'scatterChart': scatter_array
+        }
+        json_dict = json.dumps(percentage_dict)
+        print(pos_num)
+        print(neg_num)
+        print(neu_num)
+        print(comment_num)
+        return json_dict

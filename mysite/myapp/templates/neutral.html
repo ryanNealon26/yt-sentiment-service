@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block title %}
+<h4 class="header-title">Neutral Comments</h4>
+{% endblock %}
+
+{% block body %}
+{% for comment in neutralComments %} 
+    <h4 class="comment">{{ comment.0 }}</h4>
+    <h4 class="comment">Sentiment Score: {{ comment.1 }} || Positive: {{comment.2}}% || Negative: {{comment.3}}% || Neutral: {{comment.4}}%</h4>
+{% endfor %} 
+{% endblock %}

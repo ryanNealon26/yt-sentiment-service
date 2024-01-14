@@ -17,6 +17,9 @@ def readComments(request):
 def positiveComments(request):
     posCommentData = user.view_positive_comments()
     return render(request, 'positive.html', posCommentData)
+def neutralComments(request):
+    neuCommentData = user.view_neutral_comments()
+    return render(request, 'neutral.html', neuCommentData)
 def negativeComments(request):
     negCommentData = user.view_negative_comments()
     return render(request, 'negative.html', negCommentData)
@@ -24,4 +27,5 @@ def videoData(request):
     videoData = user.video_statistics()
     return render(request, 'video-data.html', videoData)
 def googleCharts(request):
-    return render(request, 'google-charts.html')
+    chart_data = user.googlecharts_json() 
+    return render(request, 'google-charts.html', {"chart_data":chart_data})
