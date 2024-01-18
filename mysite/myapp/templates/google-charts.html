@@ -1,6 +1,9 @@
 {% extends "index.html" %}
 {% block title %}
-<h4 class="header-title">Google Charts</h4>
+<div class="titleHolder">
+  <h4 class="header-title">Google Charts</h4>
+  <a href="\select" style="text-decoration: none; color: white"><h5>- Return to Select</h5></a>
+</div>
 {% endblock %}
 {% block body %}
 <script>
@@ -36,7 +39,7 @@
       }
 </script>
 <div class="chartHolder">
-  <div id="scatterchart" style="width: 900px; height: 500px;"></div>
-  <div id="piechart" style="width: 900px; height: 500px;"></div>
+  <div id="scatterchart" style="width: 900px; height: 600px;"></div>
+  <div id="piechart" style="width: 900px; height: 600px;"></div>
 </div>
 {% endblock %}

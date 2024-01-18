@@ -15,6 +15,16 @@ h4.header-title{
   font-style: italic;
   text-transform: uppercase;
 }
+h5{
+  display: inline-block;
+  color: #FFF;
+  font-style: italic;
+  text-transform: uppercase;
+  padding-left: 3px;
+}
+div.titleHolder{
+  display: flex;
+}
 div.placeholder{
   justify-content: center;
   align-items: center;
@@ -88,6 +98,12 @@ div.chartHolder{
     padding: 5px;
     width: 100%;
   }
+  div.scatterchart{
+    width: 400px; 
+    height: 300px;
+  }
+  div.piechart{
+    width: 400px; 
+    height: 300px;
+  }
 }  
-  
-}
